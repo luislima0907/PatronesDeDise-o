@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Administrativo - Sistema de Donación de Órganos">
+    <title>Dashboard Administrativo - Sistema de Donación de Órganos</title>
+    <link rel="stylesheet" href="./css/dashboard-global.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <div class="header-content">
+                <h1 class="admin-title">
+                    <span class="title-icon">📊</span>
+                    <span class="title-text">Dashboard</span>
+                    <span class="title-accent">Administrativo</span>
+                </h1>
+                <p class="header-subtitle">Centro de Control - Sistema de Donación de Órganos</p>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <!-- Mensaje de bienvenida mejorado -->
+            <div class="welcome-card" role="status" aria-live="polite">
+                <span class="welcome-icon">✓</span>
+                <div class="welcome-content">
+                    <strong class="welcome-title">¡Bienvenido, Administrador!</strong>
+                    <p class="welcome-subtitle">Has iniciado sesión correctamente. Accede a las funcionalidades disponibles.</p>
+                </div>
+            </div>
+
+            <!-- Indicadores de Estadísticas -->
+            <div class="stats-container" role="region" aria-label="Indicadores de estadísticas">
+                <div class="stat-card stat-card--organs">
+                    <div class="stat-icon">🫀</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Órganos Disponibles</p>
+                        <p class="stat-value" id="organsCount">0</p>
+                        <p class="stat-subtitle">Órganos viables y listos</p>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--patients">
+                    <div class="stat-icon">👨‍⚕️</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Pacientes en Espera</p>
+                        <p class="stat-value" id="patientsCount">0</p>
+                        <p class="stat-subtitle">En lista de prioridades</p>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--donors">
+                    <div class="stat-icon">🩸</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Donantes Activos</p>
+                        <p class="stat-value" id="donorsCount">0</p>
+                        <p class="stat-subtitle">Donantes registrados</p>
+                    </div>
+                </div>
+
+                <div class="stat-card stat-card--hospitals">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-content">
+                        <p class="stat-label">Hospitales Participantes</p>
+                        <p class="stat-value" id="hospitalsCount">0</p>
+                        <p class="stat-subtitle">Hospitales conectados</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid de menú con tarjetas -->
+            <div class="menu-grid" role="navigation" aria-label="Menú principal de administración">
+                
+                <!-- Tarjeta: Gestión de Donantes y Órganos -->
+                <a href="/donantes.html" 
+                   class="menu-card menu-card--active" 
+                   data-section="donantes"
+                   data-ripple="true"
+                   aria-label="Ir a gestión de donantes y órganos">
+                    <div class="menu-card-inner">
+                        <div class="menu-icon">🩸</div>
+                        <h2 class="menu-card-title">Gestión de Donantes y Órganos</h2>
+                        <p class="menu-card-description">Registra y gestiona donantes y sus órganos disponibles</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Gestión de Pacientes -->
+                <a href="/pacientes.html" 
+                   class="menu-card menu-card--active" 
+                   data-section="pacientes"
+                   data-ripple="true"
+                   aria-label="Ir a gestión de pacientes">
+                    <div class="menu-card-inner">
+                        <div class="menu-icon">👥</div>
+                        <h2 class="menu-card-title">Gestión de Pacientes</h2>
+                        <p class="menu-card-description">Registra pacientes en lista de espera</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Ranking de Prioridades -->
+                <a href="/ranking.html" 
+                   class="menu-card menu-card--active" 
+                   data-section="ranking"
+                   data-ripple="true"
+                   aria-label="Ir a ranking de prioridades">
+                    <div class="menu-card-inner">
+                        <div class="menu-icon">🏆</div>
+                        <h2 class="menu-card-title">Ranking de Prioridades</h2>
+                        <p class="menu-card-description">Visualiza el ranking de pacientes según prioridad</p>
+                    </div>
+                </a>
+
+                <!-- Tarjeta: Bitácora de Auditoría -->
+                <a href="/bitacora.html" 
+                   class="menu-card menu-card--active" 
+                   data-section="bitacora"
+                   data-ripple="true"
+                   aria-label="Ir a bitácora de auditoría">
+                    <div class="menu-card-inner">
+                        <div class="menu-icon">📋</div>
+                        <h2 class="menu-card-title">Bitácora de Auditoría</h2>
+                        <p class="menu-card-description">Consulta movimientos, acciones y cambios realizados en el sistema.</p>
+                        <small class="bitacora-note">
+                            Solo lectura | Registros protegidos contra edición y eliminación
+                        </small>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Botón de cierre de sesión -->
+    <button class="logout-btn" 
+            id="btnLogout" 
+            aria-label="Cerrar sesión"
+            title="Cerrar sesión">
+        Cerrar sesión
+    </button>
+
+    <!-- Scripts -->
+    <script src="./js/dashboard-global.js"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>

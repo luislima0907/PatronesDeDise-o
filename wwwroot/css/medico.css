@@ -1,0 +1,713 @@
+﻿:root {
+    /* Colores Base - Variante para Médicos */
+    --color-primary: #667eea;
+    --color-primary-hover: #5568d3;
+    --color-secondary: #764ba2;
+    
+    /* Estados */
+    --color-success: #198754;
+    --color-success-bg: #d4edda;
+    --color-error: #dc3545;
+    
+    /* Fondo Gradiente */
+    --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    /* Texto */
+    --text-primary: #1f3b57;
+    --text-secondary: #4b5563;
+    --text-light: #9ca3af;
+    --text-white: #ffffff;
+    
+    /* Gradientes de Tarjetas */
+    --gradient-donantes: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-pacientes: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-asignaciones: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-reportes: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    
+    /* Espaciado */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Sombras */
+    --shadow-card: 0 8px 16px rgba(0, 0, 0, 0.14);
+    --shadow-card-hover: 0 12px 22px rgba(0, 0, 0, 0.18);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --shadow-button: 0 6px 14px rgba(0, 0, 0, 0.2);
+    
+    /* Transiciones */
+    --transition-fast: 0.15s ease-out;
+    --transition-normal: 0.2s ease;
+    --transition-slow: 0.3s ease;
+    --transition-smooth: 0.5s ease-in-out;
+}
+
+/* Respeto a preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: 0s;
+        --transition-normal: 0s;
+        --transition-slow: 0s;
+        --transition-smooth: 0s;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Efecto de capas de fondo con animación sutil */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+    }
+    50% {
+        background: radial-gradient(circle at 80% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 20% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+    }
+}
+
+.medico-container {
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    max-width: 1180px;
+    margin: 30px auto;
+    padding: var(--spacing-2xl);
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    animation: containerFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.medico-header {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    padding-bottom: var(--spacing-lg);
+}
+
+.header-content {
+    animation: slideInDown 0.6s ease-out;
+}
+
+.medico-title {
+    font-size: 0;
+    margin: 0 0 var(--spacing-sm) 0;
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.title-icon {
+    font-size: 2.8rem;
+    animation: bounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: inline-block;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(5px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.title-text {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    animation: fadeInLeft 0.6s ease-out 0.1s both;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.title-accent {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInRight 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.header-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Línea decorativa bajo el encabezado */
+.medico-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-secondary), transparent);
+    border-radius: 2px;
+    animation: expandWidth 0.8s ease-out 0.4s both;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+.medico-main {
+    width: 100%;
+}
+
+/* Tarjeta de Bienvenida Mejorada */
+.welcome-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    background: linear-gradient(135deg, #667eea 0%, rgba(102, 126, 234, 0.8) 100%);
+    color: var(--text-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-2xl);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+    animation: slideInDown 0.5s ease-out;
+    backdrop-filter: blur(10px);
+}
+
+.welcome-icon {
+    font-size: 2rem;
+    line-height: 1;
+    flex-shrink: 0;
+    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.welcome-content {
+    flex: 1;
+}
+
+.welcome-title {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 var(--spacing-xs) 0;
+    letter-spacing: 0.3px;
+}
+
+.welcome-subtitle {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+/* Contenedor de Estadísticas */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-2xl);
+    animation: gridFadeIn 0.7s ease-out 0.15s both;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: #f8f9fa;
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all var(--transition-normal);
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.stat-card--organs {
+    border-left-color: #667eea;
+}
+
+.stat-card--organs .stat-icon {
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.stat-card--patients {
+    border-left-color: #f093fb;
+}
+
+.stat-card--donors {
+    border-left-color: #43cea2;
+}
+
+.stat-card--assignments {
+    border-left-color: #4facfe;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-label {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    margin: var(--spacing-xs) 0 0 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+}
+
+.stat-value.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+    animation: shimmer 1.5s infinite;
+    margin-left: 0.5em;
+}
+
+@keyframes shimmer {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.stat-subtitle {
+    margin: var(--spacing-xs) 0 0 0;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+/* Grid de Menú */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    animation: gridFadeIn 0.7s ease-out 0.2s both;
+}
+
+@keyframes gridFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.menu-card {
+    position: relative;
+    min-height: 230px;
+    border-radius: var(--radius-md);
+    padding: 0;
+    color: var(--text-white);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    background: var(--gradient-donantes);
+}
+
+/* Estructura interna de la tarjeta */
+.menu-card-inner {
+    padding: var(--spacing-xl);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* Efecto de brillo en hover */
+.menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-slow);
+    z-index: 1;
+}
+
+.menu-card:not(.menu-card--disabled):hover::before {
+    left: 100%;
+}
+
+/* Gradientes únicos por tarjeta */
+.menu-card[data-section="donantes"] {
+    background: var(--gradient-donantes);
+}
+
+.menu-card[data-section="pacientes"] {
+    background: var(--gradient-pacientes);
+}
+
+.menu-card[data-section="asignaciones"] {
+    background: var(--gradient-asignaciones);
+}
+
+/* Hover Effects - Tarjetas Activas */
+.menu-card--active:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-card-hover);
+}
+
+.menu-card--active:active {
+    transform: translateY(-2px) scale(1.01);
+}
+
+/* Tarjetas Deshabilitadas */
+.menu-card--disabled {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    color: var(--text-light);
+    cursor: not-allowed;
+    opacity: 0.75;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.menu-card--disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.menu-card--disabled::before {
+    display: none;
+}
+
+/* Icono de Tarjeta */
+.menu-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+    line-height: 1;
+    animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iconBounce {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.menu-card:hover .menu-icon {
+    animation: iconFloat 0.6s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* Título de Tarjeta */
+.menu-card-title {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 0.2px;
+}
+
+/* Descripción de Tarjeta */
+.menu-card-description {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .medico-container {
+        width: 94%;
+        padding: var(--spacing-xl);
+        margin: 20px auto;
+    }
+
+    .medico-title {
+        font-size: 1.8rem;
+    }
+
+    .welcome-card {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .welcome-title {
+        font-size: 1rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+    }
+
+    .menu-card {
+        min-height: 210px;
+    }
+
+    .menu-card-inner {
+        padding: var(--spacing-lg);
+    }
+
+    .menu-icon {
+        font-size: 2.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .menu-card-title {
+        font-size: 1.15rem;
+    }
+
+    .menu-card-description {
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+    .medico-container {
+        width: 96%;
+        margin: 15px auto;
+        padding: var(--spacing-lg);
+        border-radius: var(--radius-md);
+    }
+
+    .medico-title {
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .medico-header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .welcome-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .welcome-icon {
+        font-size: 1.75rem;
+    }
+
+    .welcome-title {
+        font-size: 0.95rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .menu-card {
+        min-height: 190px;
+    }
+
+    .menu-card-inner {
+        padding: var(--spacing-lg);
+    }
+
+    .menu-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .menu-card-title {
+        font-size: 1rem;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .menu-card-description {
+        font-size: 0.85rem;
+    }
+}
