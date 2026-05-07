@@ -5,7 +5,7 @@
 # Sistema de Donación de Órganos
 
 ## Descripción General
-Sistema web desarrollado en ASP.NET Core que gestiona el proceso completo de donación y asignación de órganos entre hospitales, pacientes y donantes. Implementa autenticación, control de roles y u[...]
+Sistema web desarrollado en ASP.NET Core que gestiona el proceso completo de donación y asignación de órganos entre hospitales, pacientes y donantes. Implementa autenticación, control de roles y un sistema de auditoría completo.
 
 ---
 
@@ -15,11 +15,11 @@ Sistema web desarrollado en ASP.NET Core que gestiona el proceso completo de don
 
 ### 1. Factory Method
 
-El patrón Factory Method sirve para crear objetos sin tener que indicar directamente qué clase se va a usar. En vez de crear los objetos manualmente con el constructor, se utiliza una clase encargad[...]
+El patrón Factory Method sirve para crear objetos sin tener que indicar directamente qué clase se va a usar. En vez de crear los objetos manualmente con el constructor, se utiliza una clase encargada de hacerlo. De esa manera, si más adelante cambia la forma en que se crean los objetos o se agrega uno nuevo, solo es necesario modificar la fábrica y no todo el código.
 
-Por ejemplo, si se trabaja con una imprenta que genera archivos en distintos formatos como PDF, Word o Excel, no es necesario crear cada tipo de documento por separado desde el cliente. Simplemente se[...]
+Por ejemplo, si se trabaja con una imprenta que genera archivos en distintos formatos como PDF, Word o Excel, no es necesario crear cada tipo de documento por separado desde el cliente. Simplemente se solicita el documento y la fábrica se encarga de devolver el formato correcto según lo que se necesite.
 
- **Implementación:** [PatronesDisenio/FactoryMethod/1_FactoryMethod.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/FactoryMethod/1_FactoryMethod.cs)
+**Implementación:** [PatronesDisenio/FactoryMethod/1_FactoryMethod.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/FactoryMethod/1_FactoryMethod.cs)
 
 **Conceptos clave**
 
@@ -78,9 +78,9 @@ Console.WriteLine(docPDF.Generar());
 
 ### 2. Abstract Factory
 
-El patrón Abstract Factory es una extensión del Factory Method. La diferencia es que aquí no se crea un solo objeto, sino un conjunto de objetos que tienen relación entre sí. Se utiliza cuando va[...]
+El patrón Abstract Factory es una extensión del Factory Method. La diferencia es que aquí no se crea un solo objeto, sino un conjunto de objetos que tienen relación entre sí. Se utiliza cuando varios elementos deben funcionar en conjunto y mantener el mismo estilo o compatibilidad.
 
-Un ejemplo común es una aplicación con diferentes temas visuales, como modo claro y modo oscuro. Cada tema necesita sus propios botones, ventanas, menús y demás componentes. Con Abstract Factory s[...]
+Un ejemplo común es una aplicación con diferentes temas visuales, como modo claro y modo oscuro. Cada tema necesita sus propios botones, ventanas, menús y demás componentes. Con Abstract Factory se pueden crear todos esos elementos relacionados desde una misma fábrica, asegurando que pertenezcan al mismo tema y mantengan coherencia visual.
 
  **Implementación:** [PatronesDisenio/AbstractFactory/2_AbstractFactory.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/AbstractFactory/2_AbstractFactory.cs)
 
@@ -168,11 +168,11 @@ checkboxClaro.Renderizar();
 
 ### 3. Builder
 
-El patrón Builder se utiliza para crear objetos complejos de forma ordenada y paso a paso. En lugar de usar constructores con demasiados parámetros, se van agregando las propiedades poco a poco hast[...]
+El patrón Builder se utiliza para crear objetos complejos de forma ordenada y paso a paso. En lugar de usar constructores con demasiados parámetros, se van agregando las propiedades poco a poco hasta completar el objeto. Esto hace que el código sea más claro y fácil de entender.
 
-Se puede comparar con la construcción de una casa. Primero se hacen los cimientos, luego las paredes, después el techo y así sucesivamente. Con Builder ocurre algo parecido: el objeto se arma por p[...]
+Se puede comparar con la construcción de una casa. Primero se hacen los cimientos, luego las paredes, después el techo y así sucesivamente. Con Builder ocurre algo parecido: el objeto se arma por partes hasta quedar completo.
 
- **Implementación:** [PatronesDisenio/Builder/3_Builder.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Builder/3_Builder.cs)
+**Implementación:** [PatronesDisenio/Builder/3_Builder.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Builder/3_Builder.cs)
 
 **Conceptos clave**
 
@@ -237,11 +237,11 @@ var usuario = new ConstructorUsuario()
 
 ### 4. Prototype
 
-El patrón Prototype sirve para crear nuevos objetos a partir de la copia de otro objeto ya existente, en lugar de construirlos desde cero. Esto resulta útil cuando crear un objeto requiere mucho tie[...]
+El patrón Prototype sirve para crear nuevos objetos a partir de la copia de otro objeto ya existente, en lugar de construirlos desde cero. Esto resulta útil cuando crear un objeto requiere mucho tiempo, recursos o configuraciones complejas.
 
-Un ejemplo sería al momento de trabajar con un documento que ya tiene formato, estilos y estructura definidos. En vez de volver a hacerlo todo desde el inicio, simplemente se hace una copia y se modi[...]
+Un ejemplo sería al momento de trabajar con un documento que ya tiene formato, estilos y estructura definidos. En vez de volver a hacerlo todo desde el inicio, simplemente se hace una copia y se modifican únicamente los datos necesarios. Así el proceso se vuelve más rápido y práctico.
 
- **Implementación:** [PatronesDisenio/Prototype/4_Prototype.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Prototype/4_Prototype.cs)
+**Implementación:** [PatronesDisenio/Prototype/4_Prototype.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Prototype/4_Prototype.cs)
 
 **Conceptos clave**
 
@@ -300,11 +300,11 @@ Console.WriteLine(reporteClonado.Datos.Count);   // 2
 
 ### 5. Singleton
 
-El patrón Singleton se utiliza cuando se necesita que una clase tenga una sola instancia durante toda la ejecución de la aplicación. Además, permite acceder a esa instancia desde cualquier parte d[...]
+El patrón Singleton se utiliza cuando se necesita que una clase tenga una sola instancia durante toda la ejecución de la aplicación. Además, permite acceder a esa instancia desde cualquier parte del programa sin tener que crear nuevos objetos constantemente.
 
-Este patrón suele aplicarse en casos donde solo debe existir un recurso compartido, como una conexión a base de datos, una configuración global o un administrador de sesiones. La idea es evitar dup[...]
+Este patrón suele aplicarse en casos donde solo debe existir un recurso compartido, como una conexión a base de datos, una configuración global o un administrador de sesiones. La idea es evitar duplicados innecesarios y mantener todo centralizado en un único objeto.
 
- **Implementación:** [PatronesDisenio/Singleton/5_Singleton.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Singleton/5_Singleton.cs)
+**Implementación:** [PatronesDisenio/Singleton/5_Singleton.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Singleton/5_Singleton.cs)
 
 **Conceptos clave**
 
@@ -360,11 +360,11 @@ Console.WriteLine(ReferenceEquals(config1, config2)); // true
 
 ### 6. Adapter
 
-El patrón Adapter se utiliza para lograr que dos clases con interfaces diferentes puedan trabajar juntas. Funciona como un intermediario que traduce las llamadas de una interfaz a otra, de manera sim[...]
+El patrón Adapter se utiliza para lograr que dos clases con interfaces diferentes puedan trabajar juntas. Funciona como un intermediario que traduce las llamadas de una interfaz a otra, de manera similar a un adaptador de corriente que permite conectar dispositivos incompatibles.
 
-Por ejemplo, puede suceder que exista una librería que cumple exactamente con lo que se necesita, pero sus métodos o estructura no coinciden con el resto del sistema. En ese caso, el Adapter se enca[...]
+Por ejemplo, puede suceder que exista una librería que cumple exactamente con lo que se necesita, pero sus métodos o estructura no coinciden con el resto del sistema. En ese caso, el Adapter se encarga de conectar ambas partes sin tener que modificar el código original.
 
- **Implementación:** [PatronesDisenio/Adapter/6_Adapter.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Adapter/6_Adapter.cs)
+**Implementación:** [PatronesDisenio/Adapter/6_Adapter.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Adapter/6_Adapter.cs)
 
 **Conceptos clave**
 
@@ -435,11 +435,11 @@ procesador.ProcesarPago(100m, "Donacion");
 
 ### 7. Bridge
 
-El patrón Bridge sirve para separar una abstracción de su implementación, permitiendo que ambas puedan cambiar de forma independiente. Esto ayuda a mantener el código más organizado y evita crear[...]
+El patrón Bridge sirve para separar una abstracción de su implementación, permitiendo que ambas puedan cambiar de forma independiente. Esto ayuda a mantener el código más organizado y evita crear demasiadas clases innecesarias.
 
-Un ejemplo sencillo sería trabajar con distintos tipos de vehículos y motores. Si no se usa este patrón, habría que crear una clase para cada combinación posible, como AutoEléctrico, AutoGasolin[...]
+Un ejemplo sencillo sería trabajar con distintos tipos de vehículos y motores. Si no se usa este patrón, habría que crear una clase para cada combinación posible, como AutoEléctrico, AutoGasolina, MotoEléctrica o MotoGasolina. Con Bridge, el vehículo y el motor se manejan por separado y luego se combinan según lo que se necesite.
 
- **Implementación:** [PatronesDisenio/Bridge/7_Bridge.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Bridge/7_Bridge.cs)
+**Implementación:** [PatronesDisenio/Bridge/7_Bridge.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Bridge/7_Bridge.cs)
 
 **Conceptos clave**
 
@@ -512,11 +512,11 @@ dashboard2.Acceder("maria");
 
 ### 8. Composite
 
-El patrón Composite permite organizar objetos en estructuras jerárquicas, donde un elemento puede contener otros elementos dentro de él. La ventaja es que tanto los objetos individuales como los gr[...]
+El patrón Composite permite organizar objetos en estructuras jerárquicas, donde un elemento puede contener otros elementos dentro de él. La ventaja es que tanto los objetos individuales como los grupos de objetos pueden utilizarse de la misma forma.
 
-Un ejemplo común son los menús de una aplicación. Un menú puede contener opciones simples, como "Archivo", pero también submenús con más opciones dentro. Gracias a este patrón, todos los e[...]
+Un ejemplo común son los menús de una aplicación. Un menú puede contener opciones simples, como “Archivo”, pero también submenús con más opciones dentro. Gracias a este patrón, todos los elementos se manejan de manera uniforme sin importar si son simples o compuestos.
 
- **Implementación:** [PatronesDisenio/Composite/8_Composite.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Composite/8_Composite.cs)
+**Implementación:** [PatronesDisenio/Composite/8_Composite.cs](https://github.com/luislima0907/PatronesDeDise-o/blob/main/PatronesDisenio/Composite/8_Composite.cs)
 
 **Conceptos clave**
 
@@ -695,7 +695,7 @@ hospital.MostrarEstructura();
 
 ## Patrón Implementado: Builder
 
-El patrón Builder se implementó porque el sistema tiene búsquedas avanzadas con múltiples criterios opcionales en la bitácora. Sin Builder, se necesitarían muchos parámetros opcionales que hace[...]
+El patrón Builder se implementó porque el sistema tiene búsquedas avanzadas con múltiples criterios opcionales en la bitácora. Sin Builder, se necesitarían muchos parámetros opcionales que hacen el código difícil de leer y mantener.
 
 ### Dónde Se Aplica
 
@@ -789,3 +789,4 @@ var criterioBusqueda = criterios.Construir();
 - Construir()
 
 Cada método retorna `this` para encadenamiento fluido.
+
